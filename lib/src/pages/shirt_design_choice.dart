@@ -205,7 +205,7 @@ class _ShirtDesignChoiceState extends State<ShirtDesignChoice> {
     _inputSuitDesign = SuitDesign();
     _inputSuitDesignVal = SuitDesignVal();
 
-    Order orderData = Get.arguments['orderData'];
+    var orderData = Get.arguments['orderData'];
     orderData.shirtDesign = shirtDesign as ShirtDesign;
     orderData.shirtDesignVal = shirtDesignVal as ShirtDesignVal;
     orderData.topSize = _inputTopSize;

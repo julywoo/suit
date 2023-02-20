@@ -30,7 +30,7 @@ class SuitDesignChoice extends StatefulWidget {
 class _SuitDesignChoiceState extends State<SuitDesignChoice> {
   int orderType = Get.arguments['orderType'];
   String orderNo = Get.arguments['orderNo'];
-  Order orderData = Get.arguments['orderData'];
+  var orderData = Get.arguments['orderData'];
   //List<String> orderNoList = Get.arguments['orderNoList'];
   var orderNoList = Get.arguments['orderNoList'];
 
@@ -426,7 +426,7 @@ class _SuitDesignChoiceState extends State<SuitDesignChoice> {
     _inputBottomSize = BottomSize();
     _inputShirtDesign = ShirtDesign();
     _inputShirtDesignVal = ShirtDesignVal();
-    Order orderData = Get.arguments['orderData'];
+    var orderData = Get.arguments['orderData'];
     orderData.suitDesign = suitDesign as SuitDesign;
     orderData.suitDesignVal = suitDesignVal as SuitDesignVal;
     orderData.topSize = _inputTopSize;
@@ -481,7 +481,7 @@ class _SuitDesignChoiceState extends State<SuitDesignChoice> {
     _inputSuitDesign = SuitDesign();
     _inputSuitDesignVal = SuitDesignVal();
 
-    Order orderData = Get.arguments['orderData'];
+    var orderData = Get.arguments['orderData'];
     orderData.shirtDesign = shirtDesign as ShirtDesign;
     orderData.shirtDesignVal = shirtDesignVal as ShirtDesignVal;
     orderData.topSize = _inputTopSize;

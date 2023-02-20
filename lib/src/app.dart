@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+
 import 'package:bykak/src/components/alarm_popup.dart';
 import 'package:bykak/src/components/hex_color.dart';
 
@@ -286,46 +286,46 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                               },
                             ),
 
-                            SidebarXItem(
-                              label: '알림',
-                              iconWidget: alarmCount == 0
-                                  ? Container(
-                                      child: Icon(
-                                        Icons.notifications,
-                                        color: Colors.white,
-                                        size: 15,
-                                      ),
-                                    )
-                                  : Container(
-                                      child: Badge(
-                                        badgeContent:
-                                            Text(alarmCount.toString()),
-                                        child: Icon(
-                                          Icons.notifications,
-                                          color: Colors.white,
-                                          size: 15,
-                                        ),
-                                      ),
-                                    ),
-                              onTap: () {
-                                showDialog(
-                                    context: Get.context!,
-                                    builder: (context) => AlarmPopup(
-                                          title: '알림',
-                                          //alarmList: alarmList,
-                                          okCallback: () {
-                                            try {
-                                              setState(() {
-                                                getDataCnt();
-                                              });
-                                            } catch (e) {}
+                            // SidebarXItem(
+                            //   label: '알림',
+                            //   iconWidget: alarmCount == 0
+                            //       ? Container(
+                            //           child: Icon(
+                            //             Icons.notifications,
+                            //             color: Colors.white,
+                            //             size: 15,
+                            //           ),
+                            //         )
+                            //       : Container(
+                            //           child: Badge(
+                            //             badgeContent:
+                            //                 Text(alarmCount.toString()),
+                            //             child: Icon(
+                            //               Icons.notifications,
+                            //               color: Colors.white,
+                            //               size: 15,
+                            //             ),
+                            //           ),
+                            //         ),
+                            //   onTap: () {
+                            //     showDialog(
+                            //         context: Get.context!,
+                            //         builder: (context) => AlarmPopup(
+                            //               title: '알림',
+                            //               //alarmList: alarmList,
+                            //               okCallback: () {
+                            //                 try {
+                            //                   setState(() {
+                            //                     getDataCnt();
+                            //                   });
+                            //                 } catch (e) {}
 
-                                            Get.back();
-                                          },
-                                          cancleCallback: Get.back,
-                                        ));
-                              },
-                            ),
+                            //                 Get.back();
+                            //               },
+                            //               cancleCallback: Get.back,
+                            //             ));
+                            //   },
+                            // ),
                             SidebarXItem(
                               icon: Icons.search,
                               label: '상담 내역 조회',
@@ -402,46 +402,46 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                               },
                             ),
 
-                            SidebarXItem(
-                              label: '알림',
-                              iconWidget: alarmCount == 0
-                                  ? Container(
-                                      child: Icon(
-                                        Icons.notifications,
-                                        color: Colors.white,
-                                        size: 15,
-                                      ),
-                                    )
-                                  : Container(
-                                      child: Badge(
-                                        badgeContent:
-                                            Text(alarmCount.toString()),
-                                        child: Icon(
-                                          Icons.notifications,
-                                          color: Colors.white,
-                                          size: 15,
-                                        ),
-                                      ),
-                                    ),
-                              onTap: () {
-                                showDialog(
-                                    context: Get.context!,
-                                    builder: (context) => AlarmPopup(
-                                          title: '알림',
-                                          //alarmList: alarmList,
-                                          okCallback: () {
-                                            try {
-                                              setState(() {
-                                                getDataCnt();
-                                              });
-                                            } catch (e) {}
+                            // SidebarXItem(
+                            //   label: '알림',
+                            //   iconWidget: alarmCount == 0
+                            //       ? Container(
+                            //           child: Icon(
+                            //             Icons.notifications,
+                            //             color: Colors.white,
+                            //             size: 15,
+                            //           ),
+                            //         )
+                            //       : Container(
+                            //           child: Badge(
+                            //             badgeContent:
+                            //                 Text(alarmCount.toString()),
+                            //             child: Icon(
+                            //               Icons.notifications,
+                            //               color: Colors.white,
+                            //               size: 15,
+                            //             ),
+                            //           ),
+                            //         ),
+                            //   onTap: () {
+                            //     showDialog(
+                            //         context: Get.context!,
+                            //         builder: (context) => AlarmPopup(
+                            //               title: '알림',
+                            //               //alarmList: alarmList,
+                            //               okCallback: () {
+                            //                 try {
+                            //                   setState(() {
+                            //                     getDataCnt();
+                            //                   });
+                            //                 } catch (e) {}
 
-                                            Get.back();
-                                          },
-                                          cancleCallback: Get.back,
-                                        ));
-                              },
-                            ),
+                            //                 Get.back();
+                            //               },
+                            //               cancleCallback: Get.back,
+                            //             ));
+                            //   },
+                            // ),
                             SidebarXItem(
                               icon: Icons.search,
                               label: '상담 내역 조회',
@@ -746,48 +746,48 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                                   Get.to(App());
                                 },
                               ),
-                              SidebarXItem(
-                                //icon: Icons.alarm,
-                                label: '알림',
+                              // SidebarXItem(
+                              //   //icon: Icons.alarm,
+                              //   label: '알림',
 
-                                iconWidget: alarmCount == 0
-                                    ? Container(
-                                        child: Icon(
-                                          Icons.notifications,
-                                          color: Colors.white,
-                                          size: 15,
-                                        ),
-                                      )
-                                    : Container(
-                                        child: Badge(
-                                          badgeContent:
-                                              Text(alarmCount.toString()),
-                                          child: Icon(
-                                            Icons.notifications,
-                                            color: Colors.white,
-                                            size: 15,
-                                          ),
-                                        ),
-                                      ),
-                                onTap: () {
-                                  showDialog(
-                                      context: Get.context!,
-                                      builder: (context) => AlarmPopup(
-                                            title: '알림',
-                                            //alarmList: alarmList,
-                                            okCallback: () {
-                                              try {
-                                                setState(() {
-                                                  getDataCnt();
-                                                });
-                                              } catch (e) {}
+                              //   iconWidget: alarmCount == 0
+                              //       ? Container(
+                              //           child: Icon(
+                              //             Icons.notifications,
+                              //             color: Colors.white,
+                              //             size: 15,
+                              //           ),
+                              //         )
+                              //       : Container(
+                              //           child: Badge(
+                              //             badgeContent:
+                              //                 Text(alarmCount.toString()),
+                              //             child: Icon(
+                              //               Icons.notifications,
+                              //               color: Colors.white,
+                              //               size: 15,
+                              //             ),
+                              //           ),
+                              //         ),
+                              //   onTap: () {
+                              //     showDialog(
+                              //         context: Get.context!,
+                              //         builder: (context) => AlarmPopup(
+                              //               title: '알림',
+                              //               //alarmList: alarmList,
+                              //               okCallback: () {
+                              //                 try {
+                              //                   setState(() {
+                              //                     getDataCnt();
+                              //                   });
+                              //                 } catch (e) {}
 
-                                              Get.back();
-                                            },
-                                            cancleCallback: Get.back,
-                                          ));
-                                },
-                              ),
+                              //                 Get.back();
+                              //               },
+                              //               cancleCallback: Get.back,
+                              //             ));
+                              //   },
+                              // ),
                               SidebarXItem(
                                 icon: Icons.search,
                                 label: '상담 내역 조회',
@@ -860,48 +860,48 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
                                   Get.to(App());
                                 },
                               ),
-                              SidebarXItem(
-                                //icon: Icons.alarm,
-                                label: '알림',
+                              // SidebarXItem(
+                              //   //icon: Icons.alarm,
+                              //   label: '알림',
 
-                                iconWidget: alarmCount == 0
-                                    ? Container(
-                                        child: Icon(
-                                          Icons.notifications,
-                                          color: Colors.white,
-                                          size: 15,
-                                        ),
-                                      )
-                                    : Container(
-                                        child: Badge(
-                                          badgeContent:
-                                              Text(alarmCount.toString()),
-                                          child: Icon(
-                                            Icons.notifications,
-                                            color: Colors.white,
-                                            size: 15,
-                                          ),
-                                        ),
-                                      ),
-                                onTap: () {
-                                  showDialog(
-                                      context: Get.context!,
-                                      builder: (context) => AlarmPopup(
-                                            title: '알림',
-                                            //alarmList: alarmList,
-                                            okCallback: () {
-                                              try {
-                                                setState(() {
-                                                  getDataCnt();
-                                                });
-                                              } catch (e) {}
+                              //   iconWidget: alarmCount == 0
+                              //       ? Container(
+                              //           child: Icon(
+                              //             Icons.notifications,
+                              //             color: Colors.white,
+                              //             size: 15,
+                              //           ),
+                              //         )
+                              //       : Container(
+                              //           child: Badge(
+                              //             badgeContent:
+                              //                 Text(alarmCount.toString()),
+                              //             child: Icon(
+                              //               Icons.notifications,
+                              //               color: Colors.white,
+                              //               size: 15,
+                              //             ),
+                              //           ),
+                              //         ),
+                              //   onTap: () {
+                              //     showDialog(
+                              //         context: Get.context!,
+                              //         builder: (context) => AlarmPopup(
+                              //               title: '알림',
+                              //               //alarmList: alarmList,
+                              //               okCallback: () {
+                              //                 try {
+                              //                   setState(() {
+                              //                     getDataCnt();
+                              //                   });
+                              //                 } catch (e) {}
 
-                                              Get.back();
-                                            },
-                                            cancleCallback: Get.back,
-                                          ));
-                                },
-                              ),
+                              //                 Get.back();
+                              //               },
+                              //               cancleCallback: Get.back,
+                              //             ));
+                              //   },
+                              // ),
                               SidebarXItem(
                                 icon: Icons.search,
                                 label: '상담 내역 조회',

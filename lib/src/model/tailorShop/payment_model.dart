@@ -10,7 +10,7 @@ class Payment {
   final int? usePoint;
   final String? usePointResult;
   final int? totalPrice;
-  final int? totalPrepaymenet;
+  final int? totalPrepayment;
   final String? givePointResult;
   final int? givePoint;
 
@@ -34,7 +34,7 @@ class Payment {
     this.usePoint,
     this.usePointResult,
     this.totalPrice,
-    this.totalPrepaymenet,
+    this.totalPrepayment,
     this.orderList,
     this.orderTypeList,
     this.orderPabricList,
@@ -56,7 +56,7 @@ class Payment {
         usePoint = json['usePoint'],
         usePointResult = json['usePointResult'],
         totalPrice = json['totalPrice'],
-        totalPrepaymenet = json['totalPrepaymenet'],
+        totalPrepayment = json['totalPrepayment'],
         orderList = json['orderList'],
         orderTypeList = json['orderTypeList'],
         orderPabricList = json['orderPabricList'],
@@ -77,7 +77,7 @@ class Payment {
         'usePoint': usePoint,
         'usePointResult': usePointResult,
         'totalPrice': totalPrice,
-        'totalPrepaymenet': totalPrepaymenet,
+        'totalPrepayment': totalPrepayment,
         'orderList': orderList,
         'orderTypeList': orderTypeList,
         'orderPabricList': orderPabricList,

@@ -380,7 +380,7 @@ class _CustomClothesStep2State extends State<CustomClothesStep2> {
         manager: orderData.makerName,
         phone: orderData.phone,
         totalPrice: 0,
-        totalPrepaymenet: 0,
+        totalPrepayment: 0,
         consultDate: orderData.consultDate.toString().substring(0, 10),
         orderList: orderNoList,
         orderTypeList: orderTypeList,

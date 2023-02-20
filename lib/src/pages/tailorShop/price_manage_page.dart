@@ -408,7 +408,7 @@ class _PriceManageState extends State<PriceManage>
     try {
       for (var item in paymentData.docs) {
         totalPriceList.add(item['totalPrice']);
-        totalPrepaymentList.add(item['totalPrepaymenet']);
+        totalPrepaymentList.add(item['totalPrepayment']);
         discount.add(item['discount']);
         discountSub.add(item['discountSub']);
         usePointList.add(item['usePoint']);
@@ -420,7 +420,7 @@ class _PriceManageState extends State<PriceManage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -449,6 +449,7 @@ class _PriceManageState extends State<PriceManage>
                               width: Get.width * 0.9,
                               height: Get.height,
                               child: Card(
+                                
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
                                 child: detailView
@@ -736,9 +737,7 @@ class _PriceManageState extends State<PriceManage>
                                                                                               height: 50,
                                                                                               padding: EdgeInsets.only(right: 10, bottom: 10),
                                                                                               child: TextFormField(
-                                                                                                // readOnly: usePointVal > 0 || point == 0
-                                                                                                //     ? true
-                                                                                                //     : false,
+                                                                                                readOnly: int.parse(priceList[index]) > 0 ? true : false,
                                                                                                 inputFormatters: [
                                                                                                   ThousandsFormatter()
                                                                                                 ],
@@ -1289,6 +1288,7 @@ class _PriceManageState extends State<PriceManage>
                                               textController.clear();
                                             });
                                           },
+                                          onSubmitted: (String) {},
                                         ),
                                       ),
                                       height: 100,
@@ -1361,6 +1361,7 @@ class _PriceManageState extends State<PriceManage>
                                     textController.clear();
                                   });
                                 },
+                                onSubmitted: (String) {},
                               ),
                             ),
                             height: 100,
@@ -1751,9 +1752,9 @@ class _PriceManageState extends State<PriceManage>
                                                                                 10),
                                                                         child:
                                                                             TextFormField(
-                                                                          // readOnly: usePointVal > 0 || point == 0
-                                                                          //     ? true
-                                                                          //     : false,
+                                                                          readOnly: int.parse(priceList[index]) > 0
+                                                                              ? true
+                                                                              : false,
                                                                           inputFormatters: [
                                                                             ThousandsFormatter()
                                                                           ],
@@ -2654,7 +2655,7 @@ class _PriceManageState extends State<PriceManage>
         paymentHistory = paymentDataResult['paymentHistory'];
         paymentChangeHistory = paymentDataResult['paymentChangeHistory'];
         prepaymentTotal +=
-            int.parse(paymentDataResult['totalPrepaymenet'].toString());
+            int.parse(paymentDataResult['totalPrepayment'].toString());
         existOrder = true;
 
         discountVal = paymentDataResult['discount'];
@@ -2670,14 +2671,13 @@ class _PriceManageState extends State<PriceManage>
         controller = TextEditingController(
           text: numberFormat(usePointVal).toString(),
         );
-        accruePrepayment = paymentDataResult['totalPrepaymenet'];
+        accruePrepayment = paymentDataResult['totalPrepayment'];
         totalPrice = paymentDataResult['totalPrice'];
         givePointResult = paymentDataResult['givePointResult'];
         usePointResult = paymentDataResult['usePointResult'];
       });
 
       for (var i = 0; i < priceList.length; i++) {
-        print(priceList[i]);
         _controllers1.add(
           TextEditingController(
             text: numberFormat(int.parse(priceList[i])).toString(),
@@ -2811,12 +2811,6 @@ class _PriceManageState extends State<PriceManage>
       discountVal = (totalPrice * (selected / 100)).floor();
       controllerDiscount = TextEditingController(
           text: ((totalPrice * (selected / 100))).toString());
-      // for (var i = 0; i < itemCount; i++) {
-      //   _controllers5[i] = TextEditingController(
-      //       text: (int.parse(_controllers5[i].text.toString()) *
-      //               (((100 - selected) / 100)))
-      //           .toString());
-      // }
     });
   }
 
@@ -2839,12 +2833,8 @@ class _PriceManageState extends State<PriceManage>
         _controllers1[i] = TextEditingController(text: '0');
       }
       priceList[i] = (_controllers1[i].text.toString().replaceAll(',', ''));
+      updatePrice(orderList[i], priceList[i]);
     }
-
-    // if (controllerPayment.text.toString().replaceAll(',', '') == "") {
-    //   controllerPayment = TextEditingController(text: '0');
-
-    // }
 
     String inputPrice = controllerPayment.text.toString().replaceAll(',', '');
     if (inputPrice == "0") {
@@ -2871,7 +2861,7 @@ class _PriceManageState extends State<PriceManage>
       return await payments.update({
         'usePoint': usePointVal,
         'usePointResult': 'Y',
-        // 'totalPrepaymenet': prepaymentTotal + usePointVal,
+        // 'totalPrepayment': prepaymentTotal + usePointVal,
         'paymentHistory': paymentHistory,
       });
     }
@@ -2881,7 +2871,7 @@ class _PriceManageState extends State<PriceManage>
       return await payments.update({
         'priceList': priceList,
         'totalPrice': totalPrice,
-        'totalPrepaymenet': prepaymentTotal + int.parse(inputPrice),
+        'totalPrepayment': prepaymentTotal + int.parse(inputPrice),
         //'usePoint': usePointVal,
         'discount': discountVal,
         'discountSub': discountValSub,
@@ -2891,25 +2881,23 @@ class _PriceManageState extends State<PriceManage>
         'paymentChangeHistory': paymentChangeHistory,
       });
     } else {
-      for (var i = 0; i < orderList.length; i++) {
-        final orders =
-            FirebaseFirestore.instance.collection('orders').doc(orderList[i]);
-        return await orders.update({
-          'price': priceList[i],
-        });
-      }
-
       return await payments.update({
-        // 'priceList': priceList,
-        // 'totalPrice': totalPrice,
-        'totalPrepaymenet': prepaymentTotal + int.parse(inputPrice),
-        // 'usePoint': usePointVal,
-        // 'discount': discountVal,
-        // 'discountSub': discountValSub,
-        // 'paymentHistory': paymentHistory,
-        // 'paymentChangeHistory': paymentChangeHistory,
+        'totalPrepayment': prepaymentTotal + int.parse(inputPrice),
       });
     }
+  }
+
+  CollectionReference orders = FirebaseFirestore.instance.collection('orders');
+
+  Future<void> updatePrice(
+    String orderNo,
+    String price,
+  ) {
+    return orders
+        .doc(orderNo)
+        .update({'price': price})
+        .then((value) => print("User Updated"))
+        .catchError((error) => print("Failed to update user: $error"));
   }
 
   List pointHistory = [];

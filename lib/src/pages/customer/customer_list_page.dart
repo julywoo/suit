@@ -10,6 +10,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pattern_formatter/pattern_formatter.dart';
 
 class CustomerList extends StatefulWidget {
   CustomerList({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class CustomerList extends StatefulWidget {
 class _CustomerListState extends State<CustomerList>
     with TickerProviderStateMixin {
   final controller1 = ScrollController();
+  final controllerPoint = TextEditingController();
   //final controller2 = ScrollController();
 
   final textController = TextEditingController();
@@ -151,7 +153,7 @@ class _CustomerListState extends State<CustomerList>
                     Text(
                       phoneMaskingFormat(data['phone']),
                       style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
                     ),
                     SizedBox(
                       width: 10,
@@ -159,7 +161,7 @@ class _CustomerListState extends State<CustomerList>
                     Text(
                       data['name'],
                       style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
                     ),
                   ],
                 ),
@@ -290,7 +292,7 @@ class _CustomerListState extends State<CustomerList>
         title: Text(
           '고객 관리',
           style: TextStyle(
-              color: Colors.black, fontSize: 16, fontWeight: FontWeight.w700),
+              color: Colors.black, fontSize: 14, fontWeight: FontWeight.w700),
         ),
       ),
       body: Responsive.isMobile(context)
@@ -494,7 +496,7 @@ class _CustomerListState extends State<CustomerList>
                                                                 '체형',
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        16,
+                                                                        14,
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -519,7 +521,7 @@ class _CustomerListState extends State<CustomerList>
                                                                 '최초 방문일자',
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        16,
+                                                                        14,
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -527,7 +529,7 @@ class _CustomerListState extends State<CustomerList>
                                                                 '최종 방문일자',
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        16,
+                                                                        14,
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -535,7 +537,7 @@ class _CustomerListState extends State<CustomerList>
                                                                 '고객 특이사항',
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                        16,
+                                                                        14,
                                                                     color: Colors
                                                                         .black54),
                                                               ),
@@ -554,7 +556,7 @@ class _CustomerListState extends State<CustomerList>
                                                                     firstVisitDate),
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 16,
+                                                                  fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -565,7 +567,7 @@ class _CustomerListState extends State<CustomerList>
                                                                     lastVisitDate),
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 16,
+                                                                  fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -575,7 +577,7 @@ class _CustomerListState extends State<CustomerList>
                                                                 etc,
                                                                 style:
                                                                     TextStyle(
-                                                                  fontSize: 16,
+                                                                  fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -1057,7 +1059,8 @@ class _CustomerListState extends State<CustomerList>
                                         /// You have also control over the suffixIcon, prefixIcon, helpText and animationDurationInMilli
                                         child: AnimSearchBar(
                                           helpText: '이름 또는 연락처를 입력하세요.',
-                                          //autoFocus: true,
+                                          style: TextStyle(fontSize: 14),
+                                          autoFocus: true,
                                           closeSearchOnSuffixTap: false,
                                           width: Get.width,
                                           textController: textController,
@@ -1066,6 +1069,7 @@ class _CustomerListState extends State<CustomerList>
                                               textController.clear();
                                             });
                                           },
+                                          onSubmitted: (String) {},
                                         ),
                                       ),
                                       height: 100,
@@ -1133,7 +1137,10 @@ class _CustomerListState extends State<CustomerList>
                               /// You have also control over the suffixIcon, prefixIcon, helpText and animationDurationInMilli
                               child: AnimSearchBar(
                                 helpText: '이름 또는 연락처를 입력하세요.',
-                                //autoFocus: true,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                                autoFocus: true,
                                 closeSearchOnSuffixTap: false,
                                 width: 400,
                                 textController: textController,
@@ -1142,6 +1149,7 @@ class _CustomerListState extends State<CustomerList>
                                     textController.clear();
                                   });
                                 },
+                                onSubmitted: (String) {},
                               ),
                             ),
                             height: 100,
@@ -1191,7 +1199,7 @@ class _CustomerListState extends State<CustomerList>
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
                       child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: detailView
                             ? _isLoading
                                 ? Center(
@@ -1238,7 +1246,7 @@ class _CustomerListState extends State<CustomerList>
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      fontSize: 18),
+                                                      fontSize: 14),
                                                 ),
                                               ),
                                               Row(
@@ -1257,7 +1265,7 @@ class _CustomerListState extends State<CustomerList>
                                                             child: Text(
                                                               '성명',
                                                               style: TextStyle(
-                                                                  fontSize: 16,
+                                                                  fontSize: 14,
                                                                   color: Colors
                                                                       .black54),
                                                             ),
@@ -1265,7 +1273,7 @@ class _CustomerListState extends State<CustomerList>
                                                           Text(
                                                             name,
                                                             style: TextStyle(
-                                                              fontSize: 16,
+                                                              fontSize: 14,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -1280,7 +1288,7 @@ class _CustomerListState extends State<CustomerList>
                                                             child: Text(
                                                               '연락처',
                                                               style: TextStyle(
-                                                                  fontSize: 16,
+                                                                  fontSize: 14,
                                                                   color: Colors
                                                                       .black54),
                                                             ),
@@ -1289,7 +1297,7 @@ class _CustomerListState extends State<CustomerList>
                                                             phoneMaskingFormat(
                                                                 phone),
                                                             style: TextStyle(
-                                                              fontSize: 16,
+                                                              fontSize: 14,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -1304,7 +1312,7 @@ class _CustomerListState extends State<CustomerList>
                                                             child: Text(
                                                               '성별',
                                                               style: TextStyle(
-                                                                  fontSize: 16,
+                                                                  fontSize: 14,
                                                                   color: Colors
                                                                       .black54),
                                                             ),
@@ -1314,7 +1322,7 @@ class _CustomerListState extends State<CustomerList>
                                                                 ? '남성'
                                                                 : '여성',
                                                             style: TextStyle(
-                                                              fontSize: 16,
+                                                              fontSize: 14,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -1329,7 +1337,7 @@ class _CustomerListState extends State<CustomerList>
                                                             child: Text(
                                                               '생일',
                                                               style: TextStyle(
-                                                                  fontSize: 16,
+                                                                  fontSize: 14,
                                                                   color: Colors
                                                                       .black54),
                                                             ),
@@ -1337,7 +1345,7 @@ class _CustomerListState extends State<CustomerList>
                                                           Text(
                                                             birthDate,
                                                             style: TextStyle(
-                                                              fontSize: 16,
+                                                              fontSize: 14,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -1351,7 +1359,7 @@ class _CustomerListState extends State<CustomerList>
                                                       Text(
                                                         '체형',
                                                         style: TextStyle(
-                                                            fontSize: 16,
+                                                            fontSize: 14,
                                                             color:
                                                                 Colors.black54),
                                                       ),
@@ -1375,21 +1383,21 @@ class _CustomerListState extends State<CustomerList>
                                                       Text(
                                                         '최초 방문일자',
                                                         style: TextStyle(
-                                                            fontSize: 16,
+                                                            fontSize: 14,
                                                             color:
                                                                 Colors.black54),
                                                       ),
                                                       Text(
                                                         '최종 방문일자',
                                                         style: TextStyle(
-                                                            fontSize: 16,
+                                                            fontSize: 14,
                                                             color:
                                                                 Colors.black54),
                                                       ),
                                                       Text(
                                                         '고객 특이사항',
                                                         style: TextStyle(
-                                                            fontSize: 16,
+                                                            fontSize: 14,
                                                             color:
                                                                 Colors.black54),
                                                       ),
@@ -1407,7 +1415,7 @@ class _CustomerListState extends State<CustomerList>
                                                         dateFormat(
                                                             firstVisitDate),
                                                         style: TextStyle(
-                                                          fontSize: 16,
+                                                          fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1416,7 +1424,7 @@ class _CustomerListState extends State<CustomerList>
                                                         dateFormat(
                                                             lastVisitDate),
                                                         style: TextStyle(
-                                                          fontSize: 16,
+                                                          fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1424,7 +1432,7 @@ class _CustomerListState extends State<CustomerList>
                                                       Text(
                                                         etc,
                                                         style: TextStyle(
-                                                          fontSize: 16,
+                                                          fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -1443,120 +1451,329 @@ class _CustomerListState extends State<CustomerList>
                                               SizedBox(
                                                 height: 20,
                                               ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  Container(
-                                                    width: 150,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text('보유 적립금'),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  top: 10),
-                                                          child: Text(
-                                                            numberFormat(
-                                                                    point) +
-                                                                ' P',
-                                                            style: TextStyle(
-                                                                color:
-                                                                    mainColor,
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
-                                                        )
-                                                      ],
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                        width: 150,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text('보유 적립금'),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      top: 10),
+                                                              child: Text(
+                                                                numberFormat(
+                                                                        point) +
+                                                                    ' P',
+                                                                style: TextStyle(
+                                                                    color:
+                                                                        mainColor,
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        width: 150,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text('누적 적립금'),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      top: 10),
+                                                              child: Text(
+                                                                numberFormat(
+                                                                        accruedPoint) +
+                                                                    ' P',
+                                                                style: TextStyle(
+                                                                    color: HexColor(
+                                                                        'e8764e'),
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        width: 150,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text('방문 횟수'),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      top: 10),
+                                                              child: Text(
+                                                                numberFormat(
+                                                                        purchaseCount) +
+                                                                    ' 회',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        width: 150,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text('구매 금액'),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      top: 10),
+                                                              child: Text(
+                                                                numberFormat(
+                                                                        purchaseAmount) +
+                                                                    ' 원',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      top: 20,
+                                                    ),
+                                                    child: Text(
+                                                      '포인트',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 13),
                                                     ),
                                                   ),
                                                   Container(
                                                     width: 150,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text('누적 적립금'),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  top: 10),
-                                                          child: Text(
-                                                            numberFormat(
-                                                                    accruedPoint) +
-                                                                ' P',
-                                                            style: TextStyle(
-                                                                color: HexColor(
-                                                                    'e8764e'),
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
-                                                        )
+                                                    height: 50,
+                                                    padding: EdgeInsets.only(
+                                                        top: 5, right: 10),
+                                                    child: TextFormField(
+                                                      style: TextStyle(
+                                                          fontSize: 14),
+                                                      inputFormatters: [
+                                                        ThousandsFormatter()
                                                       ],
+                                                      controller:
+                                                          controllerPoint,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: mainColor,
+                                                          ),
+                                                        ),
+                                                        contentPadding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                          horizontal: 20,
+                                                          vertical: 20,
+                                                        ),
+                                                        hintStyle:
+                                                            const TextStyle(
+                                                                fontSize: 14),
+                                                        border:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
+                                                        ),
+                                                      ),
+                                                      onChanged: (val) {},
+                                                      onSaved: (val) {},
+                                                      validator: (val) {
+                                                        return null;
+                                                      },
                                                     ),
                                                   ),
-                                                  Container(
-                                                    width: 150,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10),
+                                                    child: Row(
                                                       children: [
-                                                        Text('방문 횟수'),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  top: 10),
-                                                          child: Text(
-                                                            numberFormat(
-                                                                    purchaseCount) +
-                                                                ' 회',
-                                                            style: TextStyle(
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: 150,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text('구매 금액'),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  top: 10),
-                                                          child: Text(
-                                                            numberFormat(
-                                                                    purchaseAmount) +
-                                                                ' 원',
-                                                            style: TextStyle(
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          ),
-                                                        )
+                                                        Container(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    top: 5,
+                                                                    right: 10),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            child: Column(
+                                                              children: [
+                                                                Container(
+                                                                  width: 100,
+                                                                  //로그아웃 버튼
+                                                                  // width: MediaQuery.of(context).size.width,
+                                                                  child:
+                                                                      ElevatedButton(
+                                                                    style: TextButton
+                                                                        .styleFrom(
+                                                                      primary:
+                                                                          Colors
+                                                                              .white, //글자색
+                                                                      onSurface:
+                                                                          Colors
+                                                                              .white, //onpressed가 null일때 색상
+                                                                      backgroundColor:
+                                                                          HexColor(
+                                                                              '#172543'),
+                                                                      shadowColor:
+                                                                          Colors
+                                                                              .white, //그림자 색상
+                                                                      elevation:
+                                                                          1, // 버튼 입체감
+                                                                      textStyle:
+                                                                          TextStyle(
+                                                                              fontSize: 14),
+                                                                      //padding: EdgeInsets.all(16.0),
+                                                                      minimumSize: Size(
+                                                                          300,
+                                                                          50), //최소 사이즈
+                                                                      side: BorderSide(
+                                                                          color: HexColor(
+                                                                              '#172543'),
+                                                                          width:
+                                                                              1.0), //선
+                                                                      shape:
+                                                                          StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .center,
+                                                                    ), //글자위치 변경
+                                                                    onPressed:
+                                                                        () {
+                                                                      changePoint(
+                                                                          true,
+                                                                          int.parse(controllerPoint
+                                                                              .text
+                                                                              .toString()
+                                                                              .replaceAll(',', '')));
+                                                                    },
+
+                                                                    child:
+                                                                        const Text(
+                                                                            '적립'),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            )),
+                                                        Container(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    top: 5,
+                                                                    right: 10),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            child: Column(
+                                                              children: [
+                                                                Container(
+                                                                  width: 100,
+                                                                  //로그아웃 버튼
+                                                                  // width: MediaQuery.of(context).size.width,
+                                                                  child:
+                                                                      ElevatedButton(
+                                                                    style: TextButton
+                                                                        .styleFrom(
+                                                                      primary:
+                                                                          mainColor, //글자색
+                                                                      onSurface:
+                                                                          mainColor, //onpressed가 null일때 색상
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .white,
+                                                                      shadowColor:
+                                                                          mainColor, //그림자 색상
+                                                                      elevation:
+                                                                          1, // 버튼 입체감
+                                                                      textStyle:
+                                                                          TextStyle(
+                                                                              fontSize: 14),
+                                                                      //padding: EdgeInsets.all(16.0),
+                                                                      minimumSize: Size(
+                                                                          300,
+                                                                          50), //최소 사이즈
+                                                                      side: BorderSide(
+                                                                          color: HexColor(
+                                                                              '#172543'),
+                                                                          width:
+                                                                              1.0), //선
+                                                                      shape:
+                                                                          StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .center,
+                                                                    ), //글자위치 변경
+                                                                    onPressed:
+                                                                        () {
+                                                                      changePoint(
+                                                                          false,
+                                                                          int.parse(controllerPoint
+                                                                              .text
+                                                                              .toString()
+                                                                              .replaceAll(',', '')));
+                                                                    },
+
+                                                                    child:
+                                                                        const Text(
+                                                                            '사용'),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ))
                                                       ],
                                                     ),
                                                   ),
@@ -2011,5 +2228,10 @@ class _CustomerListState extends State<CustomerList>
               ),
             ),
     );
+  }
+
+  void changePoint(bool savePoint, int point) {
+    print(savePoint);
+    print(point);
   }
 }

@@ -5,6 +5,7 @@ import 'package:bykak/src/components/number_format.dart';
 import 'package:bykak/src/components/responsive.dart';
 import 'package:bykak/src/pages/calculate_page.dart';
 import 'package:bykak/src/pages/customer/customer_list_page.dart';
+
 import 'package:bykak/src/pages/factory/factory_cost.dart';
 import 'package:bykak/src/pages/input_suit_data.dart';
 import 'package:bykak/src/pages/progress_page.dart';
@@ -21,6 +22,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
+
+import 'customer/membership_search_page.dart';
 
 class DataItem {
   int x;
@@ -206,7 +209,7 @@ class _HomeState extends State<Home> {
         _isLoading = false;
       });
     });
-    produceList = [1, 2, 3, 4];
+    produceList = [0, 0, 0, 0];
     produceListColor = [
       mainColor.withOpacity(0.25),
       mainColor.withOpacity(0.50),
@@ -827,7 +830,7 @@ class _HomeState extends State<Home> {
       topSwiper4(context),
     ];
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.35,
+      height: MediaQuery.of(context).size.height * 0.30,
       child: Swiper(
         autoplay: false,
         itemBuilder: (context, index) {
@@ -1267,7 +1270,9 @@ class _HomeState extends State<Home> {
                                 .map((dataItem) =>
                                     BarChartGroupData(x: dataItem.x, barRods: [
                                       BarChartRodData(
-                                        toY: produceList[dataItem.x],
+                                        //toY: 1,
+                                        toY: double.parse(
+                                            produceList[dataItem.x].toString()),
                                         color: produceListColor[dataItem.x],
                                       ),
                                     ]))
@@ -2059,6 +2064,7 @@ class _HomeState extends State<Home> {
                     Get.to(
                         // CsvUpload(),
                         CustomerList()
+                        //MembershipSearch()
 
                         //arguments: {'orderType': '3'}
                         );
@@ -2275,6 +2281,7 @@ class _HomeState extends State<Home> {
                           Get.to(
                               // CsvUpload(),
                               CustomerList()
+                              //MembershipSearch()
 
                               //arguments: {'orderType': '3'}
                               );

@@ -335,15 +335,45 @@ class _MembershipSearchState extends State<MembershipSearch> {
                           StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
                       alignment: Alignment.center,
                     ), //글자위치 변경
-                    onPressed: () {
+                    onPressed: () async {
                       try {
-                        SystemChrome.setPreferredOrientations([
-                          DeviceOrientation.portraitUp,
-                          DeviceOrientation.portraitDown
-                        ]);
+                        await _auth.verifyPhoneNumber(
+                          timeout: const Duration(seconds: 60),
+                          codeAutoRetrievalTimeout: (String verificationId) {
+                            // Auto-resolution timed out...
+                          },
+                          phoneNumber: "+821094873617",
+                          verificationCompleted: (phoneAuthCredential) async {
+                            print("otp 문자옴");
+                          },
+                          verificationFailed: (verificationFailed) async {
+                            print(verificationFailed.code);
 
-                        searchCustomerPoint(nameController.text.toString(),
-                            phoneController.text.toString());
+                            print("코드발송실패");
+                            setState(() {
+                              showLoading = false;
+                            });
+                          },
+                          codeSent: (verificationId, resendingToken) async {
+                            print("코드보냄");
+                            Fluttertoast.showToast(
+                                msg:
+                                    "010-${phoneNumberController1.text}-${phoneNumberController2.text} 로 인증코드를 발송하였습니다. 문자가 올때까지 잠시만 기다려 주세요.",
+                                toastLength: Toast.LENGTH_SHORT,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.green,
+                                fontSize: 12.0);
+                            setState(() {
+                              requestedAuth = true;
+                              FocusScope.of(context).requestFocus(otpFocusNode);
+                              showLoading = false;
+                              this.verificationId = verificationId;
+                            });
+                          },
+                        );
+
+                        // searchCustomerPoint(nameController.text.toString(),
+                        //     phoneController.text.toString());
                       } catch (e) {
                         print(e);
                       }

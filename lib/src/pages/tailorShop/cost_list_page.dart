@@ -1052,6 +1052,7 @@ class _CostListState extends State<CostList> with TickerProviderStateMixin {
                                               textController.clear();
                                             });
                                           },
+                                          onSubmitted: (String) {},
                                         ),
                                       ),
                                       height: 100,
@@ -1128,6 +1129,7 @@ class _CostListState extends State<CostList> with TickerProviderStateMixin {
                                     textController.clear();
                                   });
                                 },
+                                onSubmitted: (String) {},
                               ),
                             ),
                             height: 100,
